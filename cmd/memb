@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "--" >> /tmp/memb.log
+n2reconf --group "$MARG0 $MARG1" --set "$CMD $*" "$CMD $*"
+n2control reload n2rxd

@@ -1,0 +1,8 @@
+#!/bin/sh
+IPADDR="$1"
+lab=`grep ":${IPADDR}$" $HOME/n2labels | cut -f1 -d:`
+if [ -z "$lab" ]; then
+  echo "$IPADDR"
+else
+  echo "$lab"
+fi

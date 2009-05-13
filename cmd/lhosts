@@ -1,0 +1,2 @@
+#!/bin/sh
+cat $HOME/n2labels | cut -f1 -d:

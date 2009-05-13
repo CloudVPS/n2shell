@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ "$1" != "host" ]; then
+  echo "??"
+else
+  shift
+  ip="$1"
+  if [ "$ip" = "name" ]; then
+    shift
+    ip=`$HOME/shell/cmd/getip $1`
+  fi
+  ip=`echo "$ip" | grep "[\.0123456789]*"`
+  if [ ! -z "$ip" ]; then
+    if [ -e /var/state/n2/current/$ip ]; then
+      rm -f /var/state/n2/current/$ip
+    fi
+  fi
+fi
+

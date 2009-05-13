@@ -1,0 +1,5 @@
+#!/bin/sh
+HOSTIP=`$HOME/shell/cmd/getip $2`
+/usr/bin/n2hstat $HOSTIP
+
+

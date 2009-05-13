@@ -1,0 +1,17 @@
+#!/bin/sh
+GROUP="$4"
+if [ "$5" = "ip" ]; then
+  NOLABEL=Y
+fi
+echo "Host              Status   Load      CPU    RTT   Loss  Net In/    Out     i/o"
+n2groups -f -g "$GROUP" | tail -n +2 | sort -r -n -k 3,6 | while read line; do
+ if [ -z "$NOLABEL" ]; then
+   output=`echo "$line" | cut -c 18-`
+   addr=`echo "$line" | cut -f1 -d" "`
+   hostlab=`$HOME/shell/cmd/getlabel "$addr"`
+   host=`echo "$hostlab                " | cut -c -16`
+   echo "$host $output"
+ else
+   echo "$line"
+ fi
+done

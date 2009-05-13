@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ ! -z "$2" ]; then
+  grep -m 1 --after-context=100 "^monitor-group $2 " /etc/n2/n2rxd.conf | grep -m 1 --before-context=100 "\!"
+else
+  grep "^monitor-group" /etc/n2/n2rxd.conf | sort -n
+fi
+

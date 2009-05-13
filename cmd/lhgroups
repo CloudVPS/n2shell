@@ -1,0 +1,2 @@
+#!/bin/sh
+cat /etc/n2/n2rxd.conf | grep "^host-group" | sed -e "s/^host-group //"

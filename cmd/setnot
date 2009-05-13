@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ "$CMD" = "notification" ]; then
+  n2reconf --group "$MARG0 $MARG1" --set "$CMD $1 $2" "$CMD $*"
+else
+  n2reconf --group "$MARG0 $MARG1" --set "$CMD" "$CMD $*"
+fi
+n2control reload n2rxd

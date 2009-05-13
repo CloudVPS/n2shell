@@ -1,0 +1,3 @@
+#!/bin/sh
+n2reconf --group "$MARG0 $MARG1 $MARG2" --set $CMD "$CMD $*"
+n2control reload n2rxd

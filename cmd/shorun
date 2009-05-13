@@ -1,0 +1,48 @@
+#!/bin/sh
+RCONFIG=`mktemp $HOME/running-config.XXXXXX`
+on_die()
+{
+	if [ ! -z "$RCONFIG" ]; then rm -f $RCONFIG; fi
+	exit 0
+}
+trap 'on_die' EXIT
+echo -n > $RCONFIG
+echo "Building configuration..."
+IFS='
+'
+{
+  IFS=' 	
+'
+  vers=`n2control version | cut -f1 -d-`
+  echo "!"
+  echo "version $vers"
+  if [ -f /etc/n2/n2rxd.conf ]; then echo "service netload receive"; else echo "no service netload receive"; fi
+  if [ -f /etc/n2/n2txd.conf ]; then echo "service netload transmit"; else echo "no service netload transmit"; fi
+  if [ -f /etc/n2/n2rxd.conf ]; then
+    tail -n +2 /etc/n2/n2rxd.conf | egrep -v "^$"
+  fi
+  if [ -f /etc/n2/n2txd.conf ]; then
+    cat /etc/n2/n2txd.conf | egrep -v "^$"
+  fi
+  [ -f $HOME/n2labels ] && cat $HOME/n2labels | while read line; do
+    lb=`echo "$line" | cut -f1 -d:`
+    ad=`echo "$line" | cut -f2 -d:`
+    echo "name $ad $lb"
+  done
+  echo "!"
+} | while read line; do
+  if [ "x$line" = 'x!' ]; then
+    if [ ! "$lastbang" = "y" ]; then
+      lastbang="y"
+      echo "!" >> $RCONFIG
+    fi
+  else
+    lastbang="n"
+    echo "$line" >> $RCONFIG
+  fi
+done
+sz=`wc -c < $RCONFIG | sed -e "s/ //g"`
+echo ""
+echo "Current configuration : $sz bytes"
+cat $RCONFIG
+rm -f $RCONFIG

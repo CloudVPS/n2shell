@@ -1,0 +1,44 @@
+#prompt host-group$ 
+#path cmd
+description		0 <>		Set description
+ <string>		0 <sethgdesc>	Description
+  <string>		0 <sethgdesc>	Description
+   <string>		0 <sethgdesc>	Description
+    <string>		0 <sethgdesc>	Description
+     <string>		0 <sethgdesc>   Description
+      <string>		0 <sethgdesc>	Description
+notification		0 <>		Configure notification target
+ email			0 <>		Configure email notification
+  address		0 <>		Target email address
+   <string>		0 <setnot>	Address of recipient
+  subject               0 <setnot>	Define email subject
+   ~<string>		0 <setnot>	Subject of notification message
+  sender		0 <>		Source email address
+   <string>		0 <setnot>	Address of sender
+ madnotify		0 <>		Configure madnotify target
+  url			0 <>		The submit URL
+   <string>		0 <setnot>	Fully qualified submit URL
+  username		0 <>		The submit username
+   <string>		0 <setnot>	HTTP username
+  password		0 <>		The submit password
+   <string>		0 <setnot>	HTTP password
+alert-trigger		0 <>		Set threshold for alerts
+ <integer>		0 <setnot>	Number of rounds before action
+member			0 <>		Define a member
+ host			0 <>		Define by host
+  <ipaddr>		0 <memb>	Member's host address
+ network		0 <>		Define by network
+  <ipaddr>		0 <>		Network address
+   <netmask>		0 <memb>	Network mask
+no			0 <>		Remove a setting
+ member			0 <>		Remove a member
+  host			0 <>		Define by host
+   <ipaddr>		0 <nmemb>	Address of member host to remove
+  network		0 <>		Define by network
+   <ipaddr>		0 <>		Network address to remove
+    <netmask>		0 <nmemb>	Network mask to remove
+ notification		0 <>		Remove a notification target
+  email			0 <nsetnot>	Remove email notification
+  madnotify		0 <nsetnot>	Remove madnotify notification
+exit			0 <:termdef-n2conf.cf>	Back to configuration (^Z)
+quit			0 <:termdef.cf>	Exit configuration mode (^D)

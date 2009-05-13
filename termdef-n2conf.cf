@@ -1,0 +1,50 @@
+#prompt configure% 
+#path cmd
+ip			0 <>		IP Configuration
+ bind			0 <>		Set binding address
+  <ipaddr>		0 <>		IP-Address (0.0.0.0 for any)
+   port                 0 <>            Specify listening port
+    <integer>           0 <ipbind>      Port number
+host-group		0 <>		Define a logical hostgroup
+ |lhgroups		0 <:termdef-hg.cf>	Name of the hostgroup
+ <string>               0 <:termdef-hg.cf>	Name of the hostgroup
+log                     0 <>            Set logging options
+ type                   0 <>            Specify logging type
+  malformed             0 <logtype>     Log malformed packets
+  events                0 <logtype>     Log events
+  all                   0 <logtype>     Log all
+ file                   0 <>            Specify logfile
+  <string>              0 <logfile>     Filename
+monitor-group		0 <>		Define a monitor-group
+ <iproute>		0 <>		Network address
+  <ipaddr>              0 <:termdef-mg.cf>	Access mask
+name			0 <>		Set a symbolic hostname
+ <ipaddr>		0 <>		Address host host
+  <string>		0 <setlabel>	Symbolic name
+no			0 <>		Remove something
+ host-group		0 <>		Remove a host-group
+  |lgroups		0 <nohg>	Host-group to remove
+ monitor-group		0 <>		Remove a monitor-group
+  <iproute>		0 <>		Network address
+   <ipaddr>		0 <nomg>	Access mask
+ name			0 <>		Remove a host name alias
+  <ipaddr>		0 <nonmi>	The ip address
+  <string>		0 <nonm>	The hostname
+ service		0 <>		Unconfigure a service
+  netload		0 <>		Disable a netload2 daemon
+   transmit		0 <svcoff>	Disable the transmit (client) daemon
+   receive		0 <svcoff>	Disable the receive (server) daemon
+ server			0 <>		Remove a server destination
+  <ipaddr>		0 <>		Address of server
+   port			0 <>		Specify port
+    <integer>		0 <nosrv>	Port number of server to remove
+service			0 <>		Configure a service
+ netload		0 <>		Enable a netload2 daemon
+  transmit		0 <svcon>	The transmit (client) daemon
+  receive		0 <svcon>	The receive (server) daemon
+server			0 <>		Configure a server to send stats to
+ <ipaddr>		0 <>		Server address
+  port			0 <>		Specify port
+   <integer>		0 <:termdef-srv.cf>	Port number
+exit			0 <:termdef.cf>	Exit configuration mode (^Z)
+quit			0 <:termdef.cf>	Exit configuration mode (^D)

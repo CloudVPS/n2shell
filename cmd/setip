@@ -1,0 +1,5 @@
+#!/bin/sh
+n2reconf --set "ip bind" "ip $*"
+n2control stop n2rxd
+sleep 1
+n2control start n2rxd

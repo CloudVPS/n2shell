@@ -1,0 +1,6 @@
+#prompt server$ 
+#path cmd
+key			0 <>		Set shared secret key
+ <string>		0 <setskey>	Key string
+exit			0 <:termdef-n2conf.cf>	Back to configuration (^Z)
+quit			0 <:termdef.cf>	Exit configuration mode

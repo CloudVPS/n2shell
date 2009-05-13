@@ -1,0 +1,11 @@
+#!/bin/sh
+LABELIP="$1"
+LABELNAME="$2"
+
+if [ -f $HOME/n2labels ]; then
+  cp -p $HOME/n2labels $HOME/n2labels.old
+  cat $HOME/n2labels.old | grep -v ":${LABELIP}$" > $HOME/n2labels
+fi
+echo "${LABELNAME}:${LABELIP}" >> $HOME/n2labels
+if [ -f $HOME/n2labels.old ]; then rm -f $HOME/n2labels.old; fi
+

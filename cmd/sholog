@@ -1,0 +1,2 @@
+#!/bin/sh
+tail -100 /var/log/n2/n2rxd.log

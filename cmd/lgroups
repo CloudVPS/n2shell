@@ -1,0 +1,2 @@
+#!/bin/sh
+grep "^host-group" /etc/n2/n2rxd.conf | cut -f2 -d" "

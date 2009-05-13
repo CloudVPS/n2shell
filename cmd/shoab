@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "CISH2 Configuration Internet Shell"
+echo "Copyright (C) 2003, 2004 Pim van Riezen <pi@madscience.nl>"
+echo ""
+echo "Netload Server Monitoring System (N2)"
+echo "Copyright (C) 2004 Pim van Riezen <pi@madscience.nl>"

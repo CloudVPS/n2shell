@@ -1,0 +1,38 @@
+#prompt monitor-group$ 
+#path cmd
+key			0 <>		Set shared secret key
+ <string>		0 <setkey>	Key string
+cpu-warning		0 <>		Set cpu-percent warning level
+ <integer>		0 <xwarn>	Warning level (%)
+cpu-alert		0 <>		Set cpu-percent alert level
+ <integer>		0 <xwarn>	Alert level (%)
+rtt-warning		0 <>		Set round-trip time warning level
+ <integer>		0 <xwarn>	Warning level (ms)
+rtt-alert		0 <>		Set round-trip time alert level
+ <integer>		0 <xwarn>	Error level (ms)
+loadavg-warning		0 <>		Set loadaverage warning level
+ <string>		0 <xwarn>	Warning level (1.0, 4.0, etc)
+loadavg-alert		0 <>		Set laodaverage alert level
+ <string>		0 <xwarn>	Warning level (1.0, 4.0, etc)
+loss-warning		0 <>		Set packet-loss warning level
+ <integer>		0 <xwarn>	Warning level (percent)
+loss-alert		0 <>		Set packet-loss alert level
+ <integer>		0 <xwarn>	Alert level (percent)
+sockstate-warning	0 <>		Set socket-state warning level
+ <integer>		0 <xwarn>	Number of sockets in unopen state
+sockstate-alert		0 <>		Set socket-state alert level
+ <integer>		0 <xwarn>	Number of sockets in unopen state
+swap-warning		0 <>		Set swap warning level
+ <integer>		0 <xwarn>	Free swap space in MB
+swap-alert		0 <>		Set swap alert level
+ <integer>		0 <xwarn>	Free swap space in MB
+netin-warning		0 <>		Set inbound bandwidth warning level
+ <integer>              0 <xwarn>	Warning level (kbit/s)
+netin-alert		0 <>		Set inbound bandwidth alert level
+ <integer>		0 <xwarn>	Alert level (kbit/s)
+netout-warning		0 <>		Set outbound bandwidth warning level
+ <integer>		0 <xwarn>	Warning level (kbit/s)
+netout-alert		0 <>		Set outbound bandwidth alert level
+ <integer>		0 <xwarn>	Alert level (kbit/s)
+exit			0 <:termdef-n2conf.cf>	Back to configuration (^Z)
+quit			0 <:termdef.cf>	Exit configuration mode (^D)

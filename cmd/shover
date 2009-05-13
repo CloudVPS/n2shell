@@ -1,0 +1,8 @@
+#!/bin/sh
+UN=`uname -a`
+KERNEL=`echo "$UN" | cut -f1 -d" "`
+VERSION=`echo "$UN"| cut -f3 -d" "`
+N2_VERSION=`n2control version`
+echo "System OS kernel $KERNEL $VERSION"
+echo "CISH/2 commandline shell ${CISH_VERSION}"
+echo "Netload/N2 network monitor ${N2_VERSION}"

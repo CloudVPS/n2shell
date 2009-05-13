@@ -1,0 +1,92 @@
+#prompt netload# 
+#path cmd
+configure		1 <>		Configuration mode
+ terminal		1 <:termdef-n2conf.cf>	Configure from terminal
+enable			0 <enable>	Enter enabled mode
+delete                  1 <>            Delete something
+ host                   1 <>            Delete a host
+  <ipaddr>              1 <delhost>     IP address of host to delete
+  name                  1 <>            Delete host by name
+   |lhosts              1 <delhost>     Name of host to delete
+show			0 <>		Show information
+ group			0 <shogrp>	Show host group(s)
+  |lgroups		0 <shogrp>	Specify group name
+ host			0 <>		Show host status
+  summary		0 <shosum>	Show overview of hosts
+   alerts       	0 <shosum>	Show only alerts
+    ip			0 <shosum>	List hosts by IP
+   warnings		0 <shosum>	Show only warnings (and alerts)
+    ip			0 <shosum>	List hosts by IP
+   group		0 <>		Only show a specific host-group
+    |lgroups		0 <@sgopt:shosumg>	Name of the host-group
+   ip			0 <shosum>	List hosts strictly by their ip-address
+  <ipaddr>		1 <shohost>	Show specific host
+   @showopt		1 <>		-
+  name			1 <>		Specify the host by its name
+   |lhosts		1 <@nshowopt:nshohost>	Show specific host
+ interface		1 <sho_int_sum>	Show interface summary
+ ip			1 <>		Show IP-related information
+  route			1 <sho_iproute>	Show routes
+  cache			1 <sho_ipcache>	Show cache
+ log			0 <sholog>	Show logging information
+ monitor-group		0 <shomg>	Show list of configured monitor groups
+  |lmg                  1 <shomg>	Specific group
+ running-config		1 <shorun>	Show running configuration
+ status			0 <shostat>	Show system status
+ about			0 <shoab>	Show software credits
+ version		0 <shover>	Show system version
+quit			0 <cmd_exit>	Leave
+
+@history		0 <>		-
+ hour			0 <shohist>	Show the last hour
+ day			0 <shohist> Show the last day (24 hours)
+ week			0 <shohist> Show the last week (7*24 hours)
+ month			0 <shohist>	Show the last month
+@nhistory		0 <>		-
+ hour			0 <nshohist>	Show the last hour
+ day			0 <nshohist> Show the last day (24 hours)
+ week			0 <nshohist> Show the last week (7*24 hours)
+ month			0 <nshohist>	Show the last month
+
+@showopt		0 <>		-
+ events			1 <shohoste>	Show event log
+ history		1 <shohist>	Show history
+  cpu			1 <shohist>	Show CPU usage history
+   @history		1 <>		-
+  load			1 <shohist>	Show LoadAverage history
+   @history		1 <>		-
+  rtt			1 <shohist>	Show ICMP round-trip-time history
+   @history		1 <>		-
+  netin			1 <shohist>	Show Inbound network traffic history
+   @history		1 <>		-
+  netout		1 <shohist>	Show outbound network traffic history
+   @history		1 <>		-
+  diskio		1 <shohist>	Show disk i/o history
+   @history		1 <>		-
+  ram			1 <shohist>	Show free RAM in megabytes
+   @history		1 <>		-
+  swap			1 <shohist>	Show free swap space in megabytes
+   @history		1 <>		-
+
+@nshowopt		0 <>		-
+ events			1 <nshohoste>	Show event log
+ history		1 <nshohist>	Show history
+  cpu			1 <nshohist>	Show CPU usage history
+   @nhistory		1 <>		-
+  load			1 <nshohist>	Show LoadAverage history
+   @nhistory		1 <>		-
+  rtt			1 <nshohist>	Show ICMP round-trip-time history
+   @nhistory		1 <>		-
+  netin			1 <nshohist>	Show Inbound network traffic history
+   @nhistory		1 <>		-
+  netout		1 <nshohist>	Show outbound network traffic history
+   @nhistory		1 <>		-
+  diskio		1 <nshohist>	Show disk i/o history
+   @nhistory		1 <>		-
+  ram			1 <nshohist>	Show free RAM in megabytes
+   @nhistory		1 <>		-
+  swap			1 <nshohist>	Show free swap space in megabytes
+   @nhistory		1 <>		-
+
+@sgopt			0 <>		-
+ ip			0 <shosumg>	List entries by their ip address

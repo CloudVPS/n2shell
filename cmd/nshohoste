@@ -1,0 +1,5 @@
+#!/bin/sh
+HOSTIP=`$HOME/shell/cmd/getip $3`
+/usr/bin/n2hstat $HOSTIP | grep --after-context=16 " EVENT LOG " | grep -v "^--"
+
+

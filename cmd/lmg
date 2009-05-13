@@ -1,0 +1,3 @@
+#!/bin/sh
+grep "^monitor-group" /etc/n2/n2rxd.conf | sort -n | cut -f2 -d" "
+

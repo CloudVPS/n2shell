@@ -1,0 +1,42 @@
+#!/bin/sh
+FILTER=".*"
+if [ ! -z "$2" ]; then
+  DETAILS="Y"
+  export DETAILS
+  FILTER="^$2:"
+fi
+n2groups |grep "$FILTER" | while read line; do
+  name=`echo "$line"| cut -f1 -d:`
+  hosts=`echo "$line"| cut -f2 -d:`
+  count=`echo "$line"| cut -f3 -d:`
+  netin=`echo "$line"| cut -f4 -d:`
+  netout=`echo "$line" | cut -f5 -d:`
+  rtt=`echo "$line" | cut -f6 -d:`
+  warn=`echo "$line" | cut -f7 -d:`
+  alrt=`echo "$line" | cut -f8 -d:`
+  crit=`echo "$line" | cut -f9 -d:`
+  members="members"
+  if [ "$count" = "0" ]; then
+    count="no"
+  fi
+  if [ "$count" = "1" ]; then
+    members="member"
+  fi
+  echo -n "Host-group $name has $count $members"
+  if [ ! "$warn" = "0" ]; then echo -n " WARN:$warn"; fi
+  if [ ! "$alrt" = "0" ]; then echo -n " ALRT:$alrt"; fi
+  if [ ! "$crit" = "0" ]; then echo -n " CRIT:$crit"; fi
+  echo ""
+  if [ ! "$count" = "no" ]; then
+    echo "    Network in $netin Kb/s out $netout Kb/s rtt $rtt ms"
+  fi
+  if [ "$DETAILS" = "Y" ]; then
+    for addrst in ${hosts}; do
+      addr=`echo "$addrst" | cut -f1 -d=`
+      st=`echo "$addrst" | cut -f2 -d=`
+      label=`$HOME/shell/cmd/getlabel $addr`
+	  echo "      Member $label ($addr) status $st"
+    done
+  fi
+  echo " "
+done

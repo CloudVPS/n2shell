@@ -1,0 +1,7 @@
+#!/bin/sh
+LABELNAME="$2"
+
+cp -p $HOME/n2labels $HOME/n2labels.old
+
+cat $HOME/n2labels.old | grep -v "^${LABELNAME}:" > $HOME/n2labels
+rm -f $HOME/n2labels.old

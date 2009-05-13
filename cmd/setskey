@@ -1,0 +1,3 @@
+#!/bin/sh
+n2reconf --group "$MARG0 $MARG1 $MARG2 $MARG3" --set key "key $1"
+n2control reload n2txd

@@ -1,0 +1,32 @@
+#!/bin/sh
+if [ "$4" = "ip" ]; then
+  NOLABEL=Y
+  CHECKFOR="$3"
+else
+  if [ "$3" = "ip" ]; then
+    NOLABEL=y
+  else
+    CHECKFOR="$3"
+  fi
+fi
+PATTERN=".*"
+if [ ! -z "$CHECKFOR" ]; then
+  if [ "$CHECKFOR" = "warnings" ]; then
+    PATTERN="WARN|ALERT|CRIT|STALE|DEAD"
+  fi
+  if [ "$CHECKFOR" = "alerts" ]; then
+    PATTERN="ALERT|CRIT|STALE|DEAD"
+  fi
+fi
+echo "Host              Status   Load      CPU    RTT   Loss  Net In/    Out     i/o"
+n2groups -f | tail -n +2 | sort -r -n -k 3,6 | egrep "$PATTERN" | while read line; do
+  if [ -z "$NOLABEL" ]; then
+    output=`echo "$line" | cut -c 18-`
+    addr=`echo "$line" | cut -f1 -d" "`
+    hostlab=`$HOME/shell/cmd/getlabel "$addr"`
+    host=`echo "$hostlab                " | cut -c -16`
+    echo "$host $output"
+  else
+    echo "$line"
+  fi
+done

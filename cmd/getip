@@ -1,0 +1,8 @@
+#!/bin/sh
+LABEL="$1"
+addr=`grep "^${LABEL}:" $HOME/n2labels | cut -f2 -d:`
+if [ -z "$addr" ]; then
+  echo "${LABEL}"
+else
+  echo "${addr}"
+fi

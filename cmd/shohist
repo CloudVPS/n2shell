@@ -1,0 +1,5 @@
+#!/bin/sh
+IP=`$HOME/shell/cmd/getip $2`
+/usr/bin/n2history $IP $4 $5
+
+
